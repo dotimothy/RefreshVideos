@@ -13,39 +13,24 @@
 </style>
 
 <script>
-	var fps = document.getElementById("fps");
-	var startTime = Date.now();
-	var frame = 0;
-
 	function displayResolution() {
 		var width = screen.width;
 		var height = screen.height;
 		document.getElementById("resolution").innerHTML = "Your current resolution is " + width + " by " + height + "p.";
 	}
-
-	function tick() {
-	var time = Date.now();
-	frame++;
-	if (time - startTime > 1000) {
-		fps.innerHTML = (frame / ((time - startTime) / 1000)).toFixed(1);
-		startTime = time;
-		frame = 0;
-		}
-	window.requestAnimationFrame(tick);
-	}
-	tick();
-
 </script>
 
 
 <body onload="displayResolution()">
 	<h1>RefreshVideos: A New Video Player to Watch High Refresh Rate Videos Online (Beta)</h1>
 	<h2 id="resolution"></h2>
-	<span id="fps">--</span> FPS
+	<span id="fps"></span>
 	<h2>Minecraft Elytra Gameplay at 1080p @ 120 FPS</h2>
-	<video width="1280" height="720" controls>
+	<video width="640" height="480" controls>
 		<source src="media/minecraft120.mp4" type="video/mp4">
 	</video>
+
+	<br></br>
 </body>
 
 <footer>
