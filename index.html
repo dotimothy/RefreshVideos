@@ -23,17 +23,17 @@
 		document.getElementById("resolution").innerHTML = "Your current resolution is " + width + " by " + height + "p.";
 	}
 
-	function normal120FPS() {
-		document.getElementById("120FPS").playbackRate = 1;
+	function normalFPS(videoName) {
+		document.getElementById(videoName).playbackRate = 1;
 	}
 
-	function slow60FPS() {
-		var source = document.getElementById("120FPS");
+	function slow50percent(videoName) {
+		var source = document.getElementById(videoName);
 		source.playbackRate = 0.5;
 	}
 
-	function slow30FPS() {
-		var source = document.getElementById("120FPS");
+	function slow25percent(videoName) {
+		var source = document.getElementById(videoName);
 		source.playbackRate = 0.25;
 	}
 
@@ -48,11 +48,32 @@
 		<source src="media/minecraft120.mp4" type="video/mp4">
 	</video>
 	</br></br>
-	<div id="buttons">
-		<button onclick="slow60FPS()">60 FPS @ 50% Speed</button>
-		<button onclick="slow30FPS()">30 FPS @ 25% Speed</button>
-		<button onclick="normal120FPS()">Back to 120 FPS @ 100% Speed</button>
+	<div id="buttons120">
+		<button onclick="slow50percent('120FPS')">60 FPS @ 50% Speed</button>
+		<button onclick="slow25percent('120FPS')">30 FPS @ 25% Speed</button>
+		<button onclick="normalFPS('120FPS')">Back to 120 FPS @ 100% Speed</button>
 	</div>
+	<br></br>
+	<h2>Project M @ 120 FPS</h2>
+	<video id="M120" width="1280" height="720" controls>
+		<source src="media/projectm120.mp4." type="video/mp4">
+	</video>
+	<div id="M120Buttons">
+		<button onclick="slow50percent('M120')">60 FPS @ 50% Speed</button>
+		<button onclick="slow25percent('M120')">30 FPS @ 25% Speed</button>
+		<button onclick="normalFPS('M120')">Back to 120 FPS @ 100% Speed</button>
+	</div>
+	<h2>Street Fighter Gameplay @ 60 FPS</h2>
+	<video id="60FPS" width="1280" height="720" controls>
+		<source src="media/sfiv60.mp4." type="video/mp4">
+	</video>
+	<br></br>
+	<div id="buttons60">
+		<button onclick="slow50percent('60FPS')">30 FPS @ 50% Speed</button>
+		<button onclick="slow25percent('60FPS')">15 FPS @ 25% Speed</button>
+		<button onclick="normalFPS('60FPS')">Back to 60 FPS @ 100% Speed</button>
+	</div>
+
 
 	<br></br>
 </body>
