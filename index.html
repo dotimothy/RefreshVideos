@@ -10,6 +10,10 @@
 	h1 {
 		font-size: 32px;
 	}
+	button {
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 16px;
+	}
 </style>
 
 <script>
@@ -18,16 +22,37 @@
 		var height = screen.height;
 		document.getElementById("resolution").innerHTML = "Your current resolution is " + width + " by " + height + "p.";
 	}
-</script>
 
+	function normal120FPS() {
+		document.getElementById("120FPS").playbackRate = 1;
+	}
+
+	function slow60FPS() {
+		var source = document.getElementById("120FPS");
+		source.playbackRate = 0.5;
+	}
+
+	function slow30FPS() {
+		var source = document.getElementById("120FPS");
+		source.playbackRate = 0.25;
+	}
+
+
+</script>
 
 <body onload="displayResolution()">
 	<h1>RefreshVideos: A New Video Player to Watch High Refresh Rate Videos Online (Beta)</h1>
 	<h2 id="resolution"></h2>
-	<h2>Minecraft Elytra Gameplay at 1080p @ 120 FPS</h2>
-	<video width="1280" height="720" controls>
+	<h2>Minecraft Elytra Gameplay at 1080p @ 120 FPS. Test Buttons Below to View At Different Framerates.</h2>
+	<video id="120FPS" width="1280" height="720" controls>
 		<source src="media/minecraft120.mp4" type="video/mp4">
 	</video>
+	</br></br>
+	<div id="buttons">
+		<button onclick="slow60FPS()">60 FPS @ 50% Speed</button>
+		<button onclick="slow30FPS()">30 FPS @ 25% Speed</button>
+		<button onclick="normal120FPS()">Back to 120 FPS @ 100% Speed</button>
+	</div>
 
 	<br></br>
 </body>
