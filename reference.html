@@ -8,10 +8,11 @@
   <source src="https://dotimothy.github.io/RefreshVideos/media/minecraft120.mp4" type='video/mp4'>
 </video>
 
-<p>Not Meant For Public to See.</p>
+<p>Not Meant For Public to See. Reload Page to Change FPS.</p>
 Play at <input type="number" id="FPS" value="120"> FPS
 <button onclick="startVideo(fps)">Play</button>
 <button onclick="pause()">Pause</button>
+<button onclick="reset()">Reset</button>
 
 
 <br></br>
@@ -25,26 +26,34 @@ Play at <input type="number" id="FPS" value="120"> FPS
 
 <script>
 var fps;
+var v = document.getElementById("video1");
+var c = document.getElementById("myCanvas");
+
 function getFPS() {
 	fps = document.getElementById("FPS").value;
 }
 
+function pause() {
+	document.getElementById("video1").pause();
+}
+
+function reset() {
+	pause();
+	document.getElementById("video1").currentTime = 0;
+	startVideo();
+}
+
 function startVideo() {
 getFPS();
-var v = document.getElementById("video1");
-var c = document.getElementById("myCanvas");
+
 var ctx = c.getContext("2d");
 var time = 1000 / fps;
 var i;
 
 document.getElementById("video1").play();
-v.addEventListener("play", function() {i = window.setInterval(function() {ctx.drawImage(v,5,5,1270,710)},time);}, false);
-v.addEventListener("pause", function() {window.clearInterval(i);}, false);
-v.addEventListener("ended", function() {clearInterval(i);}, false); 
-}
-
-function pause() {
-	document.getElementById("video1").pause();
+v.addEventListener("play", function() {i = window.setInterval(function() {ctx.drawImage(v,5,5,1270,710)},time);}, true);
+v.addEventListener("pause", function() {window.clearInterval(i);}, true);
+v.addEventListener("ended", function() {clearInterval(i);}, true); 
 }
 
 </script>
