@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html>
-<body onload="quickPass()">
+
+
+<body>
 
 <video hidden id="video1" width="640">
   <source src="https://dotimothy.github.io/RefreshVideos/media/minecraft120.mp4" type='video/mp4'>
 </video>
 
 <p>Not Meant For Public to See.</p>
-<button onclick="startVideo()">Play</button>
+Play at <input type="number" id="FPS" value="120"> FPS
+<button onclick="startVideo(fps)">Play</button>
 <button onclick="pause()">Pause</button>
+
+
 <br></br>
 
 
 <canvas id="myCanvas" width="1280" height="720" style="border:1px solid #d3d3d3;"></canvas>
 
 
+
+</body>
+
 <script>
+var fps;
+function getFPS() {
+	fps = document.getElementById("FPS").value;
+}
+
+function startVideo() {
+getFPS();
 var v = document.getElementById("video1");
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+var time = 1000 / fps;
 var i;
 
-v.addEventListener("play", function() {i = window.setInterval(function() {ctx.drawImage(v,5,5,1270,710)},66.67);}, false);
+document.getElementById("video1").play();
+v.addEventListener("play", function() {i = window.setInterval(function() {ctx.drawImage(v,5,5,1270,710)},time);}, false);
 v.addEventListener("pause", function() {window.clearInterval(i);}, false);
 v.addEventListener("ended", function() {clearInterval(i);}, false); 
-
-function startVideo() {
-	document.getElementById("video1").play();
 }
 
 function pause() {
 	document.getElementById("video1").pause();
 }
 
-function quickPass() {
-	var input = window.prompt("What is the secret code to access the demo:");
-	if(input != Timothy) {
-		window.alert("Please try again.");
-		document.body.innerHTML = '';
-	}
-
-}
 </script>
 
-</body>
 </html>
