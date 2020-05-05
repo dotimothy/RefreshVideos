@@ -14,6 +14,7 @@
 		font-family: 'Courier New', Courier, monospace;
 		font-size: 16px;
 	}
+
 </style>
 
 <script>
@@ -37,25 +38,55 @@
 		source.playbackRate = 0.25;
 	}
 
+	function compareMinecraft() {
+		document.getElementById("Minecraft120").play();
+		document.getElementById("Minecraft60").play();
+	}
+
+	function compareProjectM() {
+		document.getElementById("M120").play();
+		document.getElementById("M60").play();
+	}
+
 
 </script>
 
 <body onload="displayResolution()">
 	<h1>RefreshVideos: A New Video Player to Watch High Refresh Rate Videos Online (Beta)</h1>
 	<h2 id="resolution"></h2>
-	<h2>Minecraft Elytra Gameplay at 1080p @ 120 FPS. Test Buttons Below to View At Different Framerates.</h2>
-	<video id="120FPS" width="1280" height="720" controls>
+	<a href=videoplayer.html><h2>Test the Video Player</h2></a>
+	<h2>Here are some test videos to help you differentiate 60 and 120 FPS.</h2>
+	<h2>Minecraft @ 120 FPS.</h2>
+	<div id="minecraft">
+	<div id="minecraft120">
+	<video id="Minecraft120" width="1024" height="576" controls>
 		<source src="media/minecraft120.mp4" type="video/mp4">
 	</video>
 	</br></br>
-	<div id="buttons120">
-		<button onclick="slow50percent('120FPS')">60 FPS @ 50% Speed</button>
-		<button onclick="slow25percent('120FPS')">30 FPS @ 25% Speed</button>
-		<button onclick="normalFPS('120FPS')">Back to 120 FPS @ 100% Speed</button>
+	<div id="minecraftbuttons120">
+		<button onclick="slow50percent('Minecraft120')">60 FPS @ 50% Speed</button>
+		<button onclick="slow25percent('Minecraft120')">30 FPS @ 25% Speed</button>
+		<button onclick="normalFPS('Minecraft120')">Back to 120 FPS @ 100% Speed</button>
+	</div>
+	</div>
+	<div id="minecraft60">
+	<h2>Minecraft @ 60 FPS</h2>
+	<video id="Minecraft60" width="1024" height="576" controls>
+		<source src="media/minecraft60.mp4" type="video/mp4">
+	</video>
+	</br></br>
+	<div id="minecraftbuttons120">
+		<button onclick="slow50percent('Minecraft60')">30 FPS @ 50% Speed</button>
+		<button onclick="slow25percent('Minecraft60')">15 FPS @ 25% Speed</button>
+		<button onclick="normalFPS('Minecraft60')">Back to 60 FPS @ 100% Speed</button>
+	</div>
+	<button onclick="compareMinecraft()">Compare Frame Rates</button>
 	</div>
 	<br></br>
+	</div>
+	<div id ="projectm"></div>
 	<h2>Project M @ 120 FPS</h2>
-	<video id="M120" width="1280" height="720" controls>
+	<video id="M120" width="1024" height="576" controls>
 		<source src="media/projectm120.mp4" type="video/mp4">
 	</video>
 	<br></br>
@@ -64,15 +95,19 @@
 		<button onclick="slow25percent('M120')">30 FPS @ 25% Speed</button>
 		<button onclick="normalFPS('M120')">Back to 120 FPS @ 100% Speed</button>
 	</div>
-	<h2>Street Fighter Gameplay @ 60 FPS</h2>
-	<video id="60FPS" width="1280" height="720" controls>
-		<source src="media/sfiv60.mp4" type="video/mp4">
+	<h2> Project M @ 60 FPS</h2>
+	<video id="M60" width="1024" height="576" controls>
+		<source src="media/projectm60.mp4" type="video/mp4">
 	</video>
 	<br></br>
-	<div id="buttons60">
-		<button onclick="slow50percent('60FPS')">30 FPS @ 50% Speed</button>
-		<button onclick="slow25percent('60FPS')">15 FPS @ 25% Speed</button>
-		<button onclick="normalFPS('60FPS')">Back to 60 FPS @ 100% Speed</button>
+	<div id="M60Buttons">
+		<button onclick="slow50percent('M60')">30 FPS @ 50% Speed</button>
+		<button onclick="slow25percent('M60')">15 FPS @ 25% Speed</button>
+		<button onclick="normalFPS('M60')">Back to 60 FPS @ 100% Speed</button>
+	</div>
+	</
+	<br></br>
+	<button onclick="compareProjectM()">Compare Frame Rates</button>
 	</div>
 
 
