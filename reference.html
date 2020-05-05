@@ -13,6 +13,7 @@ Play at <input type="number" id="FPS" value="120"> FPS
 <button onclick="startVideo(fps)">Play</button>
 <button onclick="pause()">Pause</button>
 <button onclick="reset()">Reset</button>
+<button onclick="mute()">Reset</button>
 
 
 <br></br>
@@ -35,6 +36,10 @@ function getFPS() {
 
 function pause() {
 	document.getElementById("video1").pause();
+}
+
+function mute() {
+	document.getElementById("video1").volume = 0;
 }
 
 function reset() {
