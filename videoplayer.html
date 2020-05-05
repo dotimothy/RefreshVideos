@@ -14,8 +14,9 @@
 	function drawstartFrame(videoName) {
 		var player = document.getElementById("RefreshedVideoPlayer");
 		var video = document.getElementById(videoName);
+		video.pause();
 		var ctx = player.getContext("2d");
-		player.drawImage(video, 0, 0, 886, 584);
+		ctx.drawImage(video, 5, 5, 886, 584);
 	}
 </script>
 
@@ -27,6 +28,10 @@
 	<h2>Choose A Video:</h2>
 	<button onclick="drawstartFrame('Minecraft')">Minecraft</button>
 	</div>
+
+	<video hidden controls id="Minecraft" width="886">
+  		<source src="https://dotimothy.github.io/RefreshVideos/media/minecraft120.mp4" type='video/mp4'>
+	</video>
 </body>
 
 </html>
