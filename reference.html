@@ -4,7 +4,7 @@
 
 <body>
 
-<video hidden id="video1" width="640">
+<video controls id="video1" width="640">
   <source src="https://dotimothy.github.io/RefreshVideos/media/minecraft120.mp4" type='video/mp4'>
 </video>
 
@@ -13,7 +13,8 @@ Play at <input type="number" id="FPS" value="120"> FPS
 <button onclick="startVideo(fps)">Play</button>
 <button onclick="pause()">Pause</button>
 <button onclick="reset()">Reset</button>
-<button onclick="mute()">Reset</button>
+<button onclick="mute()">Mute</button>
+<button onclick="unmute()">Unmute</button>
 
 
 <br></br>
@@ -41,6 +42,11 @@ function pause() {
 function mute() {
 	document.getElementById("video1").volume = 0;
 }
+
+function unmute() {
+	document.getElementById("video1").volume = 0.5;
+}
+
 
 function reset() {
 	pause();
