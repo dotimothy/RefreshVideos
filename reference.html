@@ -10,7 +10,7 @@
 
 <p>Not Meant For Public to See. Reload Page to Change FPS.</p>
 Play at <input type="number" id="FPS" value="60"> FPS
-<button onclick="startVideo(fps)">Play</button>
+<button onclick="startVideo()">Play</button>
 <button onclick="pause()">Pause</button>
 <button onclick="reset()">Reset</button>
 <button onclick="mute()">Mute</button>
@@ -21,6 +21,10 @@ Play at <input type="number" id="FPS" value="60"> FPS
 
 
 <canvas id="window" width="640px" height="480px" style="border:1px solid #d3d3d3;"></canvas>
+
+<p>Filters</p>
+<button onclick="switchOn(age)">Age</button>
+<button onclick="switchOn(blackAndwhite)">Black and White</button>
 
 
 
@@ -54,10 +58,78 @@ function reset() {
 	startVideo();
 }
 
+
 function drawFrame() {
 	var ctx = c.getContext("2d");
 	ctx.drawImage(v,5,5,c.width-10,c.height-10);
+	//chooseFilter();
+	age();	
 }
+/*
+var age = false;
+var blackAndwhite = false;
+
+function switchOn(filter) {
+	if(filter == 'age') {
+		age = true; 
+		blackAndwhite = false;
+	}
+	if(filter == 'blackAndwhite') {
+		blackAndwhite = true;
+		age = false;
+	}
+}
+
+function chooseFilter() {
+	if(age == true) {
+		age();
+	}
+	if(blackAndwhite == true) {
+		blackAndwhite();
+	}
+
+}
+*/
+
+function age() {
+	var canvas = document.getElementById("window");
+	var ctx = canvas.getContext("2d");
+	var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+	console.log(imgData);
+	for(var i = 0; i < imgData.data.length; i += 4) {
+		var red = imgData.data[i];
+		var green = imgData.data[i + 1];
+		var blue = imgData.data[i + 2];
+		var alpha = imgData.data[i + 3];
+		var age = (red + green + blue) / 5;
+		imgData.data[i] = age * 1.6;
+		imgData.data[i + 1] = age * 1.6;
+		imgData.data[i + 2] = age;
+		imgData.data[i + 3] = alpha;
+	}
+	 ctx.putImageData(imgData, 0, 0);
+	}
+
+function blackAndwhite() {
+	var canvas = document.getElementById("window");
+	var ctx = canvas.getContext("2d");
+	var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+	console.log(imgData);
+	for(var i = 0; i < imgData.data.length; i += 4) {
+		var red = imgData.data[i];
+		var green = imgData.data[i + 1];
+		var blue = imgData.data[i + 2];
+		var alpha = imgData.data[i + 3];
+		var grayscale = (red + green + blue) / 3;
+		imgData.data[i] = grayscale;
+		imgData.data[i + 1] = grayscale;
+		imgData.data[i + 2] = grayscale;
+		imgData.data[i + 3] = alpha;
+	}
+	 ctx.putImageData(imgData, 0, 0);
+}
+
+
 
 function startVideo() {
 getFPS();
