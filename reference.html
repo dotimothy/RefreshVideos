@@ -4,12 +4,12 @@
 
 <body>
 
-<video hidden controls id="video1" width="640">
+<video hidden controls id="test" width="640">
   <source src="media/duck.mp4" type='video/mp4'>
 </video>
 
 <p>Not Meant For Public to See. Reload Page to Change FPS.</p>
-Play at <input type="number" id="FPS" value="120"> FPS
+Play at <input type="number" id="FPS" value="60"> FPS
 <button onclick="startVideo(fps)">Play</button>
 <button onclick="pause()">Pause</button>
 <button onclick="reset()">Reset</button>
@@ -20,7 +20,7 @@ Play at <input type="number" id="FPS" value="120"> FPS
 <br></br>
 
 
-<canvas id="myCanvas" width="1280" height="720" style="border:1px solid #d3d3d3;"></canvas>
+<canvas id="window" width="640px" height="480px" style="border:1px solid #d3d3d3;"></canvas>
 
 
 
@@ -28,30 +28,35 @@ Play at <input type="number" id="FPS" value="120"> FPS
 
 <script>
 var fps;
-var v = document.getElementById("video1");
-var c = document.getElementById("myCanvas");
+var v = document.getElementById("test");
+var c = document.getElementById("window");
 
 function getFPS() {
 	fps = document.getElementById("FPS").value;
 }
 
 function pause() {
-	document.getElementById("video1").pause();
+	document.getElementById("test").pause();
 }
 
 function mute() {
-	document.getElementById("video1").volume = 0;
+	document.getElementById("test").volume = 0;
 }
 
 function unmute() {
-	document.getElementById("video1").volume = 0.5;
+	document.getElementById("test").volume = 0.5;
 }
 
 
 function reset() {
 	pause();
-	document.getElementById("video1").currentTime = 0;
+	document.getElementById("test").currentTime = 0;
 	startVideo();
+}
+
+function drawFrame() {
+	var ctx = c.getContext("2d");
+	ctx.drawImage(v,5,5,c.width-10,c.height-10);
 }
 
 function startVideo() {
@@ -61,8 +66,8 @@ var ctx = c.getContext("2d");
 var time = 1000 / fps;
 var i;
 
-document.getElementById("video1").play();
-v.addEventListener("play", function() {i = window.setInterval(function() {ctx.drawImage(v,5,5,1270,710)},time);}, true);
+document.getElementById("test").play();
+v.addEventListener("play", function() {i = window.setInterval(drawFrame,time);}, true);
 v.addEventListener("pause", function() {window.clearInterval(i);}, true);
 v.addEventListener("ended", function() {clearInterval(i);}, true); 
 }
