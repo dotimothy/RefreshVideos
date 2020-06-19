@@ -23,8 +23,8 @@ Play at <input type="number" id="FPS" value="60"> FPS
 <canvas id="window" width="640px" height="480px" style="border:1px solid #d3d3d3;"></canvas>
 
 <p>Filters</p>
-<button onclick="switchOn(age)">Age</button>
-<button onclick="switchOn(blackAndwhite)">Black and White</button>
+<button onclick="switchOn('age')">Age</button>
+<button onclick="switchOn('blackAndwhite')">Black and White</button>
 
 
 
@@ -62,34 +62,36 @@ function reset() {
 function drawFrame() {
 	var ctx = c.getContext("2d");
 	ctx.drawImage(v,5,5,c.width-10,c.height-10);
-	//chooseFilter();
-	age();	
+	chooseFilter();	
 }
-/*
-var age = false;
-var blackAndwhite = false;
+
+var ageChoose = false;
+var blackAndwhiteChoose = false;
+
 
 function switchOn(filter) {
 	if(filter == 'age') {
-		age = true; 
-		blackAndwhite = false;
+		ageChoose = true; 
+		blackAndwhiteChoose = false;
 	}
 	if(filter == 'blackAndwhite') {
-		blackAndwhite = true;
-		age = false;
+		blackAndwhiteChoose = true;
+		ageChoose = false;
 	}
 }
 
 function chooseFilter() {
-	if(age == true) {
+	if(ageChoose == true) {
 		age();
 	}
-	if(blackAndwhite == true) {
+	if(blackAndwhiteChoose == true) {
 		blackAndwhite();
 	}
 
 }
-*/
+
+
+
 
 function age() {
 	var canvas = document.getElementById("window");
