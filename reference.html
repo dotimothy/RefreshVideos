@@ -4,7 +4,7 @@
 
 <body>
 
-<video hidden controls id="test" width="640">
+<video hidden controls id="test">
   <source src="media/duck.mp4" type='video/mp4'>
 </video>
 
@@ -25,6 +25,8 @@ Play at <input type="number" id="FPS" value="60"> FPS
 <p>Filters</p>
 <button onclick="switchOn('age')">Age</button>
 <button onclick="switchOn('blackAndwhite')">Black and White</button>
+<button onclick="switchOn('detectEdge')">Detect Edge</button>
+<button onclick="switchOn()">Revert</button>
 
 
 
@@ -67,16 +69,27 @@ function drawFrame() {
 
 var ageChoose = false;
 var blackAndwhiteChoose = false;
+var edgeDetectChoose = false;
 
 
 function switchOn(filter) {
 	if(filter == 'age') {
 		ageChoose = true; 
 		blackAndwhiteChoose = false;
+		edgeDetectChoose = false;
 	}
-	if(filter == 'blackAndwhite') {
+	else if(filter == 'blackAndwhite') {
 		blackAndwhiteChoose = true;
 		ageChoose = false;
+		edgeDetectChoose = false;
+	}
+	else if(filter == 'detectEdge') {
+		edgeDetectChoose = true;
+	}
+	else {
+		ageChoose = false;
+		blackAndwhiteChoose = false; 
+		edgeDetectChoose = false; 
 	}
 }
 
@@ -86,6 +99,9 @@ function chooseFilter() {
 	}
 	if(blackAndwhiteChoose == true) {
 		blackAndwhite();
+	}
+	if(edgeDetectChoose == true) {
+		detectEdge();
 	}
 
 }
@@ -128,19 +144,36 @@ function blackAndwhite() {
 	 ctx.putImageData(imgData, 0, 0);
 }
 
+function detectEdge() {
+	var canvas = document.getElementById("window");
+	var ctx = canvas.getContext("2d");
+	var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+	ctx.putImageData(imgData, 0, 0);
+	var data = imgData.data;
+	var width = imgData.width;
+	var limit = data.length;
+	for(var i = 0; i < limit; i++) {
+		if( i%4 == 3 ) {
+			continue;
+		} 
+		data[i] = 127 + 2*data[i] - data[i + 4] - data[i + width*4];
+	}
+	ctx.putImageData(imgData, 0, 0);
+}
+
 
 
 function startVideo() {
-getFPS();
+	getFPS();
 
-var ctx = c.getContext("2d");
-var time = 1000 / fps;
-var i;
+	var ctx = c.getContext("2d");
+	var time = 1000 / fps;
+	var i;
 
-document.getElementById("test").play();
-v.addEventListener("play", function() {i = window.setInterval(drawFrame,time);}, true);
-v.addEventListener("pause", function() {window.clearInterval(i);}, true);
-v.addEventListener("ended", function() {clearInterval(i);}, true); 
+	document.getElementById("test").play();
+	v.addEventListener("play", function() {i = window.setInterval(drawFrame,time);}, true);
+	v.addEventListener("pause", function() {window.clearInterval(i);}, true);
+	v.addEventListener("ended", function() {clearInterval(i);}, true); 
 }
 
 </script>
