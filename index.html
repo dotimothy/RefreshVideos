@@ -121,6 +121,20 @@
 </footer>
 
 -->
-
+<body onload="check()">
 <embed src="reference.html" width="100%" height="720px"></embed>
+</body>
+
+<script>
+	function check() {
+		var pass = prompt("Enter the secret code");
+		if(pass != "refresh") {
+			confirm("Access Denied");
+			window.location.href = "https://dotimothy.github.io/RefreshVideos";
+		}
+		else {
+			confirm("Access Granted. Enjoy!");
+		}
+	}
+</script>
 </html>
