@@ -130,7 +130,7 @@
 		var pass = prompt("Enter the secret code");
 		if(pass != "refresh") {
 			confirm("Access Denied");
-			window.location.href = "https://dotimothy.github.io/RefreshVideos";
+			window.history.back();
 		}
 		else {
 			confirm("Access Granted. Enjoy!");
