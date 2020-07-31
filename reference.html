@@ -22,11 +22,16 @@ Play at <input type="number" id="FPS" value="60"> FPS
 
 <canvas id="window" width="640px" height="480px" style="border:1px solid #d3d3d3;"></canvas>
 
-<p>Filters</p>
+<p>Video Filters</p>
 <button onclick="switchOn('age')">Age</button>
 <button onclick="switchOn('blackAndwhite')">Black and White</button>
 <button onclick="switchOn('detectEdge')">Detect Edge</button>
 <button onclick="switchOn()">Revert</button>
+
+<p>Audio Filters</p>
+<button>Normal</button>
+<button>Bass Boosted</button>
+<button>Theater</button>
 
 
 
@@ -67,6 +72,7 @@ function drawFrame() {
 	chooseFilter();	
 }
 
+//video effects
 var ageChoose = false;
 var blackAndwhiteChoose = false;
 var edgeDetectChoose = false;
