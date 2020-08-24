@@ -130,7 +130,7 @@
 		var pass = prompt("Enter the secret code");
 		if(pass != "refresh") {
 			confirm("Access Denied");
-			window.history.back();
+			location.replace("https://dotimothy.github.io/RefreshVideos/compare.html")
 		}
 		else {
 			confirm("Access Granted. Enjoy!");
