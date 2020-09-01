@@ -2,6 +2,9 @@
 <html>
 
 
+
+
+
 <body onload="check()">
 
 <video hidden controls id="test">
@@ -19,7 +22,6 @@ Play at <input type="number" id="FPS" value="60"> FPS
 
 <br></br>
 
-<!-- name: -->
 <canvas id="window" width="640px" height="480px" style="border:1px solid #d3d3d3;"></canvas>
 
 <p>Video Filters</p>
@@ -41,6 +43,17 @@ Play at <input type="number" id="FPS" value="60"> FPS
 var fps;
 var v = document.getElementById("test");
 var c = document.getElementById("window");
+
+  function check() {
+		var pass = prompt("Enter the secret code");
+		if(pass != "refresh") {
+			confirm("Access Denied");
+			location.replace("https://dotimothy.github.io/RefreshVideos/")
+		}
+		else {
+			confirm("Access Granted. Enjoy!");
+		}
+	}
 
 function getFPS() {
 	fps = document.getElementById("FPS").value;
@@ -207,6 +220,7 @@ function chooseAudioFilter() {
   else if(theaterChoose = true) {
     theater();
   }
+}
 
   function bassBoost() {
     document.write("bass");
@@ -216,18 +230,10 @@ function chooseAudioFilter() {
     document.write("theater");
   }
 
-  function check() {
-		var pass = prompt("Enter the secret code");
-		if(pass != "refresh") {
-			confirm("Access Denied");
-			location.replace("https://dotimothy.github.io/RefreshVideos/")
-		}
-		else {
-			confirm("Access Granted. Enjoy!");
-		}
-	}
 
 
 </script>
+
+
 
 </html>
