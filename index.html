@@ -3,20 +3,8 @@
 	<title>RefreshVideos: At High Refresh Rates</title>
 </head>
 
-<body onload="check()">
-<embed src="reference.html" style="position:absolute" width="100%" height="100%"></embed>
+<body>
+<embed src="compare.html" style="position:absolute" width="100%" height="100%"></embed>
 </body>
 
-<script>
-	function check() {
-		var pass = prompt("Enter the secret code");
-		if(pass != "refresh") {
-			confirm("Access Denied");
-			location.replace("https://dotimothy.github.io/RefreshVideos/compare.html")
-		}
-		else {
-			confirm("Access Granted. Enjoy!");
-		}
-	}
-</script>
 </html>

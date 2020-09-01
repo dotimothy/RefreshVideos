@@ -2,7 +2,7 @@
 <html>
 
 
-<body>
+<body onload="check()">
 
 <video hidden controls id="test">
   <source src="media/duck.mp4" type='video/mp4'>
@@ -215,6 +215,17 @@ function chooseAudioFilter() {
   function theater() {
     document.write("theater");
   }
+
+  function check() {
+		var pass = prompt("Enter the secret code");
+		if(pass != "refresh") {
+			confirm("Access Denied");
+			location.replace("https://dotimothy.github.io/RefreshVideos/")
+		}
+		else {
+			confirm("Access Granted. Enjoy!");
+		}
+	}
 
 }
 
