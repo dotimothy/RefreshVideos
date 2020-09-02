@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-
-
-
-
 <body onload="check()">
 
 <video hidden controls id="test">
@@ -18,6 +14,7 @@ Play at <input type="number" id="FPS" value="60"> FPS
 <button onclick="reset()">Reset</button>
 <button onclick="mute()">Mute</button>
 <button onclick="unmute()">Unmute</button>
+<button onclick="fullScreen()">Fullscreen</button>
 
 
 <br></br>
@@ -39,12 +36,19 @@ Play at <input type="number" id="FPS" value="60"> FPS
 
 </body>
 
+<style>
+	body {
+		margin:0;
+	}
+</style>
+
 <script>
-var fps;
+	var fps;
 var v = document.getElementById("test");
 var c = document.getElementById("window");
 
   function check() {
+  	/*
 		var pass = prompt("Enter the secret code");
 		if(pass != "refresh") {
 			confirm("Access Denied");
@@ -53,7 +57,9 @@ var c = document.getElementById("window");
 		else {
 			confirm("Access Granted. Enjoy!");
 		}
+	*/
 	}
+	
 
 function getFPS() {
 	fps = document.getElementById("FPS").value;
@@ -230,10 +236,23 @@ function chooseAudioFilter() {
     document.write("theater");
   }
 
+  var fullSwitch = true;
 
+  function fullScreen() {
+  	if(fullSwitch == true) {
+  		c.width = window.innerWidth;
+  		c.height = window.innerHeight;
+  		fullSwitch = false;
+  	} 
+  	else {
+  		c.width = 640; 
+  		c.height = 480;
+  		fullSwitch = true;
 
+  	}
+
+  }
 </script>
-
 
 
 </html>
