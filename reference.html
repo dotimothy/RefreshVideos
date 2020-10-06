@@ -8,7 +8,7 @@
 </video>
 
 <p>Not Meant For Public to See. Reload Page to Change FPS.</p>
-Play at <input type="number" id="FPS" value="60"> FPS
+Play at <input type="number" id="FPS" value="240"> FPS
 <button onclick="startVideo()">Play</button>
 <button onclick="pause()">Pause</button>
 <button onclick="reset()">Reset</button>
@@ -20,6 +20,12 @@ Play at <input type="number" id="FPS" value="60"> FPS
 <br></br>
 
 <canvas id="window" width="640px" height="480px" style="border:1px solid #d3d3d3;"></canvas>
+
+<p>Speeds</p>
+<button onclick="changeSpeed(0.25)">25%</button>
+<button onclick="changeSpeed(0.5)">50%</button>
+<button onclick="changeSpeed(1)">100%</button>
+<button onclick="changeSpeed(2)">200%</button>
 
 <p>Video Filters</p>
 <button onclick="switchVideoOn('age')">Age</button>
@@ -43,7 +49,7 @@ Play at <input type="number" id="FPS" value="60"> FPS
 </style>
 
 <script>
-	var fps;
+var fps;
 var v = document.getElementById("test");
 var c = document.getElementById("window");
 
@@ -59,7 +65,7 @@ function check() {
 }
 
 function changeSpeed(rate) {
-	v.s
+	v.playbackRate = rate;
 }
 	
 
