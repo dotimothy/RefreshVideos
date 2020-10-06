@@ -47,16 +47,20 @@ Play at <input type="number" id="FPS" value="60"> FPS
 var v = document.getElementById("test");
 var c = document.getElementById("window");
 
-  function check() {
-		var pass = prompt("Enter the secret code");
-		if(pass != "refresh") {
-			confirm("Access Denied");
-			location.replace("https://dotimothy.github.io/RefreshVideos/")
-		}
-		else {
-			confirm("Access Granted. Enjoy!");
-		}
+function check() {
+	var pass = prompt("Enter the secret code");
+	if(pass != "refresh") {
+		confirm("Access Denied");
+		location.replace("https://dotimothy.github.io/RefreshVideos/")
 	}
+	else {
+		confirm("Access Granted. Enjoy!");
+	}
+}
+
+function changeSpeed(rate) {
+	v.s
+}
 	
 
 function getFPS() {
@@ -64,21 +68,21 @@ function getFPS() {
 }
 
 function pause() {
-	document.getElementById("test").pause();
+	v.pause();
 }
 
 function mute() {
-	document.getElementById("test").volume = 0;
+	v.volume = 0;
 }
 
 function unmute() {
-	document.getElementById("test").volume = 0.5;
+	v.volume = 0.5;
 }
 
 
 function reset() {
 	pause();
-	document.getElementById("test").currentTime = 0;
+	v.currentTime = 0;
 	startVideo();
 }
 
@@ -96,7 +100,7 @@ function startVideo() {
 	var time = 1000 / fps;
 	var i;
 
-	document.getElementById("test").play();
+	v.play();
 	v.addEventListener("play", function() {i = window.setInterval(drawVideoAudio,time);}, true);
 	v.addEventListener("pause", function() {window.clearInterval(i);}, true);
 	v.addEventListener("ended", function() {clearInterval(i);}, true);
