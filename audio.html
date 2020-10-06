@@ -1,5 +1,5 @@
 
-<video id="buck" width="640px" controls>
+<video id="src" width="640px" controls>
   <source src="https://dotimothy.github.io/RefreshVideos/media/duck.mp4">
 </video>
 
@@ -9,19 +9,19 @@
 <script>
   function bassBoost() {
     var context = new AudioContext(),
-      audioSource = context.createMediaElementSource(document.getElementById("buck")),
+      audioSource = context.createMediaElementSource(document.getElementById("src")),
       filter = context.createBiquadFilter();
     audioSource.connect(filter);
     filter.connect(context.destination);
 
-    filter.type = "lowshelf";
+    filter.type = "lowpass";
     filter.frequency.value = 200;
     filter.gain.value = 10;
   }
 
   function lively() {
     var context = new AudioContext(),
-      audioSource = context.createMediaElementSource(document.getElementById("buck")),
+      audioSource = context.createMediaElementSource(document.getElementById("src")),
       filter = context.createBiquadFilter();
     audioSource.connect(filter);
     filter.connect(context.destination);
