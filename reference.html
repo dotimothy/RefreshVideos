@@ -193,6 +193,7 @@ function blackAndwhite() {
 }
 
 function detectEdge() {
+	blackAndwhite();
 	var canvas = document.getElementById("window");
 	var ctx = canvas.getContext("2d");
 	var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
