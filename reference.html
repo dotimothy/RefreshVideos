@@ -35,8 +35,8 @@ Play at <input type="number" id="FPS" value="240"> FPS
 <button onclick="switchVideoOn()">Revert</button>
 
 <p>Audio Filters</p>
-<button onclick="switchAudioOn('bassboosted')">Bass Boosted</button>
-<button onclick="switchAudioOn('theater')">Theater</button>
+<button onclick="bassBoost()">Bass Boosted</button>
+<button onclick="theater()">Theater</button>
 <button>Revert</button>
 
 
@@ -98,6 +98,7 @@ function drawVideoAudio() {
 	var ctx = c.getContext("2d");
 	ctx.drawImage(v,5,5,c.width-10,c.height-10);
 	chooseVideoFilter();
+	chooseAudioFilter();
 }
 
 function startVideo() {
@@ -132,6 +133,8 @@ function switchVideoOn(filter) {
 	}
 	else if(filter == 'detectEdge') {
 		edgeDetectChoose = true;
+		ageChoose = false;
+		blackAndwhiteChoose = false;
 	}
 	else {
 		ageChoose = false;
@@ -144,10 +147,10 @@ function chooseVideoFilter() {
 	if(ageChoose == true) {
 		age();
 	}
-	if(blackAndwhiteChoose == true) {
+	else if(blackAndwhiteChoose == true) {
 		blackAndwhite();
 	}
-	if(edgeDetectChoose == true) {
+	else if(edgeDetectChoose == true) {
 		detectEdge();
 	}
 
@@ -239,11 +242,27 @@ function chooseAudioFilter() {
 }
 
   function bassBoost() {
-    document.write("bass");
+    var context = new AudioContext(),
+      audioSource = context.createMediaElementSource(document.getElementById("test")),
+      filter = context.createBiquadFilter();
+    audioSource.connect(filter);
+    filter.connect(context.destination);
+
+    filter.type = "lowshelf";
+    filter.frequency.value = 200;
+    filter.gain.value = 15;
   }
 
   function theater() {
-    document.write("theater");
+        var context = new AudioContext(),
+      audioSource = context.createMediaElementSource(document.getElementById("test")),
+      filter = context.createBiquadFilter();
+    audioSource.connect(filter);
+    filter.connect(context.destination);
+
+    filter.type = "highpass";
+    filter.frequency.value = 400;
+    filter.gain.value = 10;
   }
 
   var fullSwitch = true;
