@@ -15,6 +15,7 @@ Play at <input type="number" id="FPS" value="240"> FPS
 <button onclick="mute()">Mute</button>
 <button onclick="unmute()">Unmute</button>
 <button onclick="fullScreen()">Fullscreen</button>
+<button onclick="loop()">Loop</button>
 
 
 <br></br>
@@ -112,6 +113,11 @@ function startVideo() {
 	v.addEventListener("play", function() {i = window.setInterval(drawVideoAudio,time);}, true);
 	v.addEventListener("pause", function() {window.clearInterval(i);}, true);
 	v.addEventListener("ended", function() {clearInterval(i);}, true);
+}
+
+function loop() {
+	startVideo();
+	document.setTimeout(startVideo,6000);
 }
 
 //video effects
