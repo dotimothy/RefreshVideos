@@ -117,7 +117,8 @@ function startVideo() {
 
 function loop() {
 	startVideo();
-	document.setTimeout(loop,11000);
+	setTimeout(loop,11000*(1/v.playbackRate));
+	reset();
 }
 
 //video effects
